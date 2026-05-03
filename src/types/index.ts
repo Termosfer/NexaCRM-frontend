@@ -1,0 +1,121 @@
+// --- ENUMS & LITERAL TYPES ---
+export type UserRole = 'ADMIN' | 'MANAGER' | 'USER';
+export type LeadStatus = 'NEW' | 'CONTACTED' | 'QUALIFIED' | 'NEGOTIATION' | 'WON' | 'LOST';
+export type SectorKey = 'TURIZM' | 'KURS' | 'EMLAK' | 'AVTO' | 'DEFAULT';
+
+// --- CORE ENTITIES ---
+export interface Organization {
+  id: string;
+  nameString: string;
+  businessSector: SectorKey;
+  logoUrl?: string;
+  createdAt: string;
+}
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole;
+  organization?: Organization;
+}
+
+export interface Customer {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  companyName: string;
+  active: boolean;
+  createdAt: string;
+  organizationId?: string;
+}
+
+export interface Lead {
+  id: string;
+  title: string;
+  description?: string;
+  amount: number;
+  status: LeadStatus;
+  customer: Customer;
+  createdAt: string;
+}
+
+// --- AUTHENTICATION TYPES ---
+export interface AuthUser {
+  email: string;
+  role: UserRole | string;
+  organizationId: string;
+  companyName: string;
+  businessSector?: SectorKey; // Logində bunu saxlayırıq ki, Dashboard oxuya bilsin
+}
+
+export interface AuthResponse {
+  token: string;
+  email: string;
+  role: UserRole;
+  organizationId: string;
+  companyName: string;
+  businessSector: SectorKey;
+}
+
+export interface AuthContextType {
+  token: string | null;
+  user: AuthUser | null;
+  login: (token: string, userData: AuthUser) => void;
+  logout: () => void;
+  isAuthenticated: boolean;
+}
+
+export interface RegisterRequest {
+  fullName: string;
+  email: string;
+  password: string;
+  companyName: string;
+  businessSector: SectorKey;
+}
+
+// --- DASHBOARD & ANALYTICS TYPES ---
+export interface DashboardStats {
+  totalCustomers: number;
+  customerGrowth: number;
+  totalLeads: number;
+  leadsGrowth: number;
+  totalExpectedRevenue: number;
+  revenueGrowth: number;
+}
+
+export interface ChartData {
+  name: string;
+  value: number;
+}
+
+export interface MonthlyTrend {
+  month: string;
+  customers: number;
+  leads: number;
+  revenue: number;
+}
+
+// --- UTILITY TYPES ---
+export interface PageResponse<T> {
+  content: T[];
+  totalPages: number;
+  totalElements: number;
+  number: number;
+  size: number;
+}
+
+export interface ValidationErrors {
+  fullName?: string;
+  email?: string;
+  password?: string;
+  companyName?: string;
+}
+
+export interface ApiError {
+  message: string;
+  status?: number;
+  timestamp?: string;
+}
