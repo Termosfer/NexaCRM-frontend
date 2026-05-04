@@ -16,7 +16,7 @@ import { useMutation } from "@tanstack/react-query";
 import api from "../api/axios";
 import toast from "react-hot-toast";
 import { SECTOR_CONFIG } from "../constants/sectors";
-import RegisterBG from "../assets/wmremove-transformed (1).png";
+import RegisterBG from "../assets/register.png";
 import type {
   ApiError,
   RegisterRequest,

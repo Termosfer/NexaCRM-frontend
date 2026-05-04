@@ -17,6 +17,8 @@ import { Toaster } from "react-hot-toast";
 import Sidebar from "./components/Sidebar";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import Team from "./pages/Team";
+import Departments from "./pages/Departments";
 
 // 1. Query Client Yaradırıq
 const queryClient = new QueryClient({
@@ -57,6 +59,8 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route element={<MainLayout />}>
                 <Route path="/" element={<Dashboard />} />
+                <Route path="/departments" element={<Departments />} />
+                <Route path="/team" element={<Team />} />
                 <Route path="/customers" element={<CustomerList />} />
                 <Route path="/leads" element={<KanbanBoard />} />
                 <Route

@@ -1,9 +1,9 @@
 import { Plane, GraduationCap, Home, Car, Layout } from 'lucide-react';
-import travel from "../assets/Gemini_Generated_Image_khpszkhpszkhpszk.png";
-import education from "../assets/Gemini_Generated_Image_19bulh19bulh19bu.png";
-import real_estate from "../assets/Gemini_Generated_Image_vo99u9vo99u9vo99.png";
-import car from "../assets/Gemini_Generated_Image_bprtc8bprtc8bprt.png";
-import login_img from "../assets/Gemini_Generated_Image_xns9zbxns9zbxns9.png"
+import travel from "../assets/travel.png";
+import education from "../assets/education.png";
+import real_estate from "../assets/real-estate.png";
+import car from "../assets/car.png";
+import login_img from "../assets/login.png"
 export const SECTOR_CONFIG = {
   TURIZM: {
     name: 'Turizm Agentliyi',

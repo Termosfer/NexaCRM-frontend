@@ -1,15 +1,26 @@
-import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, UserCircle, Briefcase, Settings, LogOut, Zap } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { NavLink } from "react-router-dom";
+import {
+  LayoutDashboard,
+  UserCircle,
+  Briefcase,
+  Settings,
+  LogOut,
+  Zap,
+  Users,
+  Building2,
+} from "lucide-react";
+import { useAuth } from "../context/AuthContext";
 
 const Sidebar = () => {
   const { logout, user } = useAuth();
 
   const menuItems = [
-    { path: '/', icon: LayoutDashboard, label: 'Dashboard' },
-    { path: '/customers', icon: UserCircle, label: 'Müştərilər' },
-    { path: '/leads', icon: Briefcase, label: 'Satışlar' },
-    { path: '/settings', icon: Settings, label: 'Ayarlar' },
+    { path: "/", icon: LayoutDashboard, label: "Dashboard" },
+    { path: "/departments", icon: Building2, label: "Şöbələr" },
+    { path: "/team", icon: Users, label: "Komanda" },
+    { path: "/customers", icon: UserCircle, label: "Müştərilər" },
+    { path: "/leads", icon: Briefcase, label: "Satışlar" },
+    { path: "/settings", icon: Settings, label: "Ayarlar" },
   ];
 
   return (
@@ -19,7 +30,9 @@ const Sidebar = () => {
           <div className="p-2 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
             <Zap size={24} fill="white" />
           </div>
-          <span className="text-2xl font-black tracking-tighter italic">NexaCRM</span>
+          <span className="text-2xl font-black tracking-tighter italic">
+            NexaCRM
+          </span>
         </div>
 
         <nav className="space-y-2">
@@ -27,14 +40,21 @@ const Sidebar = () => {
             <NavLink
               key={item.path}
               to={item.path}
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `flex items-center space-x-4 p-4 rounded-2xl transition-all duration-300 group ${
-                  isActive ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-500/20' : 'text-slate-400 hover:bg-slate-800/50 hover:text-white'
+                  isActive
+                    ? "bg-indigo-600 text-white shadow-xl shadow-indigo-500/20"
+                    : "text-slate-400 hover:bg-slate-800/50 hover:text-white"
                 }`
               }
             >
-              <item.icon size={20} className="group-hover:scale-110 transition-transform" />
-              <span className="font-bold text-sm tracking-wide">{item.label}</span>
+              <item.icon
+                size={20}
+                className="group-hover:scale-110 transition-transform"
+              />
+              <span className="font-bold text-sm tracking-wide">
+                {item.label}
+              </span>
             </NavLink>
           ))}
         </nav>
@@ -46,11 +66,15 @@ const Sidebar = () => {
             {user?.email?.[0].toUpperCase()}
           </div>
           <div className="overflow-hidden">
-            <p className="text-xs font-black text-white truncate">{user?.companyName || 'Nexa User'}</p>
-            <p className="text-[10px] font-bold text-slate-500 truncate">{user?.email}</p>
+            <p className="text-xs font-black text-white truncate">
+              {user?.companyName || "Nexa User"}
+            </p>
+            <p className="text-[10px] font-bold text-slate-500 truncate">
+              {user?.email}
+            </p>
           </div>
         </div>
-        <button 
+        <button
           onClick={logout}
           className="flex items-center space-x-3 text-rose-400 hover:text-rose-300 font-black text-xs uppercase tracking-widest transition-colors w-full"
         >

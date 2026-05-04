@@ -1,7 +1,13 @@
 // --- ENUMS & LITERAL TYPES ---
-export type UserRole = 'ADMIN' | 'MANAGER' | 'USER';
-export type LeadStatus = 'NEW' | 'CONTACTED' | 'QUALIFIED' | 'NEGOTIATION' | 'WON' | 'LOST';
-export type SectorKey = 'TURIZM' | 'KURS' | 'EMLAK' | 'AVTO' | 'DEFAULT';
+export type UserRole = "ADMIN" | "MANAGER" | "USER";
+export type LeadStatus =
+  | "NEW"
+  | "CONTACTED"
+  | "QUALIFIED"
+  | "NEGOTIATION"
+  | "WON"
+  | "LOST";
+export type SectorKey = "TURIZM" | "KURS" | "EMLAK" | "AVTO" | "DEFAULT";
 
 // --- CORE ENTITIES ---
 export interface Organization {
@@ -12,12 +18,23 @@ export interface Organization {
   createdAt: string;
 }
 
+export interface Department {
+  id: number;
+  name: string;
+  createdAt: string;
+}
 export interface User {
   id: string;
   name: string;
   email: string;
-  role: UserRole;
+  role: string;
+  jobTitle?: string;
+  salary?: number;
+  status?: string;
+  department?: Department;
   organization?: Organization;
+  bonusAmount?: number;
+  departmentId?:number;
 }
 
 export interface Customer {
