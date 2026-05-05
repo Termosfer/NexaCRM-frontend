@@ -19,6 +19,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Team from "./pages/Team";
 import Departments from "./pages/Departments";
+import Settings from "./pages/Settings";
 
 // 1. Query Client Yaradırıq
 const queryClient = new QueryClient({
@@ -65,7 +66,7 @@ function App() {
                 <Route path="/leads" element={<KanbanBoard />} />
                 <Route
                   path="/settings"
-                  element={<div className="p-10 font-bold">Ayarlar</div>}
+                  element={<Settings />}
                 />
               </Route>
             </Route>

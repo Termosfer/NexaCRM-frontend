@@ -1,13 +1,7 @@
 // --- ENUMS & LITERAL TYPES ---
-export type UserRole = "ADMIN" | "MANAGER" | "USER";
-export type LeadStatus =
-  | "NEW"
-  | "CONTACTED"
-  | "QUALIFIED"
-  | "NEGOTIATION"
-  | "WON"
-  | "LOST";
-export type SectorKey = "TURIZM" | "KURS" | "EMLAK" | "AVTO" | "DEFAULT";
+export type UserRole = 'ADMIN' | 'MANAGER' | 'USER';
+export type LeadStatus = 'NEW' | 'CONTACTED' | 'QUALIFIED' | 'NEGOTIATION' | 'WON' | 'LOST';
+export type SectorKey = 'TURIZM' | 'KURS' | 'EMLAK' | 'AVTO' | 'DEFAULT';
 
 // --- CORE ENTITIES ---
 export interface Organization {
@@ -19,22 +13,22 @@ export interface Organization {
 }
 
 export interface Department {
-  id: number;
+  id: string;
   name: string;
-  createdAt: string;
+  createdAt?: string;
 }
+
 export interface User {
   id: string;
   name: string;
   email: string;
-  role: string;
+  role: UserRole;
   jobTitle?: string;
   salary?: number;
+  bonusAmount?: number;
   status?: string;
   department?: Department;
   organization?: Organization;
-  bonusAmount?: number;
-  departmentId?:number;
 }
 
 export interface Customer {
@@ -59,19 +53,35 @@ export interface Lead {
   createdAt: string;
 }
 
+
+
+
+export interface AuthContextType {
+  token: string | null;
+  user: AuthUser | null;
+  login: (token: string, userData: AuthUser) => void;
+  logout: () => void;
+  isAuthenticated: boolean;
+}
+
+
 // --- AUTHENTICATION TYPES ---
 export interface AuthUser {
+  id: string;           // DİQQƏT: Əlavə edildi
+  name: string;         // DİQQƏT: Əlavə edildi
   email: string;
-  role: UserRole | string;
+  role: string;
   organizationId: string;
   companyName: string;
-  businessSector?: SectorKey; // Logində bunu saxlayırıq ki, Dashboard oxuya bilsin
+  businessSector: SectorKey; // DİQQƏT: String deyil, SectorKey olmalıdır
 }
 
 export interface AuthResponse {
   token: string;
+  id: string;
+  name: string;
   email: string;
-  role: UserRole;
+  role: string;
   organizationId: string;
   companyName: string;
   businessSector: SectorKey;
@@ -85,12 +95,23 @@ export interface AuthContextType {
   isAuthenticated: boolean;
 }
 
+// --- DTO & REQUEST TYPES ---
 export interface RegisterRequest {
   fullName: string;
   email: string;
-  password: string;
+  password?: string;
   companyName: string;
   businessSector: SectorKey;
+}
+
+export interface ProfileUpdatePayload {
+  name: string;
+  email: string;
+}
+
+export interface PasswordChangePayload {
+  oldPassword: string;
+  newPassword: string;
 }
 
 // --- DASHBOARD & ANALYTICS TYPES ---

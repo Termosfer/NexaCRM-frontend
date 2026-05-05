@@ -1,21 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useState } from "react";
+import type { AuthContextType, AuthUser } from "../types";
 
-export interface AuthUser {
-  email: string;
-  role: string;
-  organizationId: string;
-  companyName: string;
-  businessSector?: string; // Dinamik Login arxa fonu üçün mütləq lazımdır
-}
-
-interface AuthContextType {
-  token: string | null;
-  user: AuthUser | null;
-  login: (token: string, userData: AuthUser) => void;
-  logout: () => void;
-  isAuthenticated: boolean;
-}
 
 // ==========================================
 // 2. CONTEXT
