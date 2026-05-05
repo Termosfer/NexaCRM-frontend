@@ -122,6 +122,9 @@ export interface DashboardStats {
   leadsGrowth: number;
   totalExpectedRevenue: number;
   revenueGrowth: number;
+  totalExpense?:number;
+  netProfit?:number;
+  profitMargin?:number;
 }
 
 export interface ChartData {
@@ -156,4 +159,17 @@ export interface ApiError {
   message: string;
   status?: number;
   timestamp?: string;
+}
+
+
+export type ExpenseCategory = 'SALARY' | 'MARKETING' | 'RENT' | 'OFFICE' | 'UTILITIES' | 'TAX' | 'OTHER';
+
+export interface Expense {
+  id: string;
+  title: string;
+  amount: number;
+  category: ExpenseCategory;
+  date: string;
+  createdAt: string;
+  createdByUser?: User;
 }

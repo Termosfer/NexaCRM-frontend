@@ -20,6 +20,7 @@ import ResetPassword from "./pages/ResetPassword";
 import Team from "./pages/Team";
 import Departments from "./pages/Departments";
 import Settings from "./pages/Settings";
+import Finance from "./pages/Finance";
 
 // 1. Query Client Yaradırıq
 const queryClient = new QueryClient({
@@ -60,6 +61,7 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route element={<MainLayout />}>
                 <Route path="/" element={<Dashboard />} />
+                <Route path="/finance" element={<Finance />} />
                 <Route path="/departments" element={<Departments />} />
                 <Route path="/team" element={<Team />} />
                 <Route path="/customers" element={<CustomerList />} />

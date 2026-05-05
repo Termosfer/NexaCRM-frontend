@@ -8,6 +8,7 @@ import {
   Zap,
   Users,
   Building2,
+  Wallet,
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
@@ -16,6 +17,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { path: "/", icon: LayoutDashboard, label: "Dashboard" },
+    { path: "/finance", icon: Wallet, label: "Maliyyə" },
     { path: "/departments", icon: Building2, label: "Şöbələr" },
     { path: "/team", icon: Users, label: "Komanda" },
     { path: "/customers", icon: UserCircle, label: "Müştərilər" },
